@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Onother Try</title>
+    <style media="screen">
+    * {
+      box-sizing: border-box;
+      font-family: 'Ubuntu', sans-serif;
+    }
+    body {
+      background-color: #318fb5;
+    }
+    .form__wrapper {
+      width: 395px;
+      height: 610px;
+      background-color: #fff;
+      border-radius: 4px;
+      padding: 40px 20px;
+      margin: 27px 40px;
+
+    }
+    .form__header {
+      font-size: 35px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    /*------------------------------------Boxes ------------------------------*/
+    .form__box {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 50px;
+    }
+    .form__box .step {
+      width: 100%;
+    }
+    .step .step__title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .step .step__bullet {
+      width: 30px;
+      height: 30px;
+      border: 3px solid #000;
+      border-radius: 5px;
+      margin: auto;
+      position: relative;
+    }
+    .step__bullet .step__number {
+      position: absolute;
+      left: 7px;
+      top: 3px;
+    }
+    .step__bullet i {
+      position: absolute;
+      left: 4px;
+      top: 3px;
+      opacity: 0;
+    }
+    .step__bullet::before, .step__bullet::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 26px;
+      background-color: #000;
+      width: 60px;
+      height: 4px;
+    }
+    .step:last-child .step__bullet::before, .step:last-child .step__bullet::after {
+      display: none;
+    }
+    .step__bullet.active {
+      background-color: #127681;
+      border-radius: 5px;
+      border: 3px solid #127681;
+      color: #fff;
+    }
+    .step__bullet.active1::after {
+      transform-origin: left;
+      background-color: #127681;
+      transform: scaleX(0);
+      animation: bar 0.3s linear forwards;
+    }
+    i.active1 {
+      opacity: 1;
+      color: #fff;
+    }
+    .step__number.active1 {
+      opacity: 0;
+    }
+    @keyframes bar {
+      100% {
+        transform: scaleX(1);
+      }
+    }
+    .step__bullet.active2::after {
+      background-color: #127681;
+    }
+    .step__bullet.active2::after {
+      transform-origin: right;
+      background-color: #000;
+      transform: scaleX(0);
+      animation: bar2 0.3s linear forwards;
+    }
+    i.active2 {
+      opacity: 0;
+    }
+    .step__number.active2 {
+      opacity: 1;
+    }
+    @keyframes bar2 {
+      100% {
+        transform: scaleX(1);
+      }
+    }
+
+    /*------------------------------------form-----------*/
+
+    .form__form {
+      overflow: hidden;
+      width: 100%;
+      height: 340px;
+    }
+    .form__form form {
+      display: flex;
+      width: 400%;
+    }
+    .form__group {
+      width: 25%;
+    }
+    .form__title {
+      font-size:  25px;
+      margin-bottom: 30px;
+    }
+    .form__field {
+      display: flex;
+      flex-direction: column;
+    }
+    .form__field label {
+      margin-bottom: 15px;
+    }
+    .form__field-input {
+      position: relative;
+    }
+    .form__field-input input {
+      width: 100%;
+      height: 40px;
+      border: 2px solid #000;
+      border-radius: 5px;
+      padding: 0 20px;
+    }
+    .form__validation {
+      position: absolute;
+      right: 15px;
+      bottom: 11px;
+      opacity: 0;
+    }
+    .form__validation-active {
+      opacity: 1;
+    }
+    .form__error {
+      font-size: 12px;
+      color: red;
+      display: none;
+    }
+    .form__error-active {
+      display: block;
+    }
+    .form__field {
+      margin-bottom: 20px;
+    }
+    .form__field-input .gender {
+      width: 100%;
+      height: 40px;
+      border: 2px solid #000;
+      border-radius: 5px;
+      padding: 0 20px;
+    }
+    /*---------------------------ntn----------------------------*/
+
+    .btn__first {
+      width: 100%;
+      height: 40px;
+      border: none;
+      background-color: #127681;
+      color: #fff;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+    .btn__first:hover {
+      background-color: #ccc;
+      color: #000;
+      outline: none;
+    }
+    .form__btns {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+    .form__btns button {
+      height: 40px;
+      width: 48%;
+      border: none;
+      outline: none;
+      background-color: #127681;
+      color: #fff;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    .form__btns button:hover {
+      background-color: #ccc;
+      color: #000;
+      outline: none;
+    }
+    /*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+    .form__field-inactive label {
+      color: #d54062;
+    }
+    .form__field-inactive input {
+      border: 4px solid #d54062 !important;
+      outline: none;
+
+    }
+    .form__field-inactive i {
+      opacity: 1;
+      color: #d54062;
+    }
+    .form__field-inactive .form__error {
+      display: block;
+    }
+    .form__field-active i {
+      opacity: 1;
+      color: #79d70f;
+    }
+
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@1,500&display=swap" rel="stylesheet">
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      const slideForm = document.querySelector(".form__slide")
+      const btn__first = document.querySelector(".btn__first")
+      const btn__next = document.querySelector("#next")
+      const btn__next2 = document.querySelector("#next2")
+      const btn__prev = document.querySelector("#prev")
+      const btn__prev2 = document.querySelector("#prev2")
+      const btn__prev3 = document.querySelector("#prev3")
+      const bullets = document.querySelectorAll(".step__bullet")
+      const icon__barr = document.querySelectorAll(".step__bullet i")
+      const numbers = document.querySelectorAll(".step__number")
+
+      var current = 0
+
+      bullets[current].classList.add("active")
+
+      btn__first.addEventListener("click", () => {
+        slideForm.style.transition = "margin-left 0.7s ease"
+        slideForm.style.marginLeft = "-25%"
+        current ++
+        setTimeout(() => {
+          bullets[current].classList.add("active")
+        }, 300)
+        bullets[current -1].classList.add("active1")
+        icon__barr[current -1].classList.add("active1")
+        numbers[current -1].classList.add("active1")
+
+      })
+
+      btn__next.addEventListener("click", () => {
+        slideForm.style.transition = "margin-left 0.7s ease"
+        slideForm.style.marginLeft = "-50%"
+        current ++
+        setTimeout(() => {
+          bullets[current].classList.add("active")
+        }, 300)
+        bullets[current -1].classList.add("active1")
+        icon__barr[current -1].classList.add("active1")
+        numbers[current -1].classList.add("active1")
+      })
+
+      btn__next2.addEventListener("click", () => {
+        slideForm.style.transition = "margin-left 0.7s ease"
+        slideForm.style.marginLeft = "-75%"
+        current ++
+        setTimeout(() => {
+          bullets[current].classList.add("active")
+        }, 300)
+        bullets[current -1].classList.add("active1")
+        icon__barr[current -1].classList.add("active1")
+        numbers[current -1].classList.add("active1")
+      })
+
+      btn__prev.addEventListener("click", () => {
+        slideForm.style.transition = "margin-left 0.7s ease"
+        slideForm.style.marginLeft = "0%"
+      })
+
+      btn__prev2.addEventListener("click", () => {
+        slideForm.style.transition = "margin-left 0.7s ease"
+        slideForm.style.marginLeft = "-25%"
+      })
+
+      btn__prev3.addEventListener("click", () => {
+        slideForm.style.transition = "margin-left 0.7s ease"
+        slideForm.style.marginLeft = "-50%"
+        current --
+        bullets[current +1].classList.remove("active")
+        bullets[current].classList.add("active2")
+        icon__barr[current].classList.add("active2")
+        numbers[current].classList.add("active2")
+      })
+    })
+    </script>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector(".form__form form")
+      const inputs = document.querySelectorAll(".form__field-input input")
+
+      function getFocus() {
+        document.querySelector("#name").focus()
+      }
+      getFocus()
+
+      const exp = {
+        user: /^[a-zA-Z0-9\_\-]{4,6}$/, // Letras, numeros, guion y guion_bajo
+        name: /^[a-zA-ZÀ-ÿ\s]{5,8}$/,
+        surname: /^[a-zA-ZÀ-ÿ\s]{5,10}$/, // Letras y espacios, pueden llevar acentos.
+        password: /^.{4,12}$/, // 4 a 12 digitos.
+        email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+        phone: /^\d{5,14}$/
+      }
+
+      function evaluate() {
+        switch(this.name) {
+          case "name":
+            valid(exp.name, this.value, "name")
+            break
+          case "surname":
+            valid(exp.surname, this.value, "surname")
+            break
+          case "user":
+            valid(exp.user, this.value, "user")
+            break
+          case "password":
+            valid(exp.password, this.value, "password")
+            break
+          case "email":
+            valid(exp.email, this.value, "email")
+            break
+          case "phone":
+            valid(exp.phone, this.value, "phone")
+            break
+        }
+      }
+
+      const name = document.querySelector("#name")
+      function valid(exp, input, tag) {
+        if (exp.test(input)) {
+          document.querySelector(`#form__${tag}`).classList.remove("form__field-inactive")
+          document.querySelector(`#form__${tag}`).classList.add("form__field-active")
+          document.querySelector(`#form__${tag} i`).classList.remove("fa-times-circle")
+          document.querySelector(`#form__${tag} i`).classList.add("fa-check-circle")
+        }
+        else {
+          document.querySelector(`#form__${tag}`).classList.remove("form__field-active")
+          document.querySelector(`#form__${tag}`).classList.add("form__field-inactive")
+          document.querySelector(`#form__${tag}`).classList.remove("fa-check-circle")
+          document.querySelector(`#form__${tag}`).classList.add("fa-times-circle")
+        }
+      }
+
+      inputs.forEach(input => {
+        input.addEventListener("keyup", evaluate)
+        input.addEventListener("blur", evaluate)
+      })
+    })
+
+    </script>
+    <script src="https://kit.fontawesome.com/35df8435d5.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+
+    <div class="form__wrapper">
+
+      <div class="form__header">
+        Sign Up
+      </div>
+
+      <div class="form__box">
+
+        <div class="step">
+          <div class="step__title">Name</div>
+          <div class="step__bullet">
+            <div class="step__number">1</div>
+            <i class="fas fa-check-circle"></i>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step__title">Contact</div>
+          <div class="step__bullet">
+            <div class="step__number">2</div>
+            <i class="fas fa-check-circle"></i>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step__title">Birth</div>
+          <div class="step__bullet">
+            <div class="step__number">3</div>
+            <i class="fas fa-check-circle"></i>
+          </div>
+        </div>
+
+        <div class="step">
+          <div class="step__title">Send</div>
+          <div class="step__bullet">
+            <div class="step__number">4</div>
+            <i class="fas fa-check-circle"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form__form">
+
+        <form class="" action="#" method="post">
+
+          <div class="form__group form__slide">
+            <div class="form__title">Basic Info</div>
+            <div class="form__field" id="form__name">
+              <label for="name" class="form__name">Name</label>
+              <div class="form__field-input">
+                <input type="text" class="form__name" name="name" id="name" value="">
+                <i class="form__validation fas fa-times-circle"></i>
+              </div>
+              <p class="form__error">Sólo letra y números de un minimo de 5 a 8 caracteres</p>
+            </div>
+
+            <div class="form__field" id="form__surname">
+              <label for="surname" class="form__surname">Surname</label>
+              <div class="form__field-input">
+                <input type="text" class="form__surname" name="surname" id="surname" value="">
+                <i class="form__validation fas fa-times-circle"></i>
+              </div>
+              <p class="form__error">Sólo letra y números de un minimo de 5 a 10 caracteres</p>
+            </div>
+
+            <div class="form__btn">
+              <button type="button" name="first" id="first" class="btn__first">Next</button>
+            </div>
+          </div>
+
+          <div class="form__group">
+            <div class="form__title">Contact</div>
+            <div class="form__field" id="form__email">
+              <label for="email" class="form__name">Email</label>
+              <div class="form__field-input">
+                <input type="email" class="form__email" name="email" id="email" value="">
+                <i class="form__validation fas fa-times-circle"></i>
+              </div>
+              <p class="form__error">Correo no permitido. Intente con otra</p>
+            </div>
+
+            <div class="form__field" id="form__phone">
+              <label for="phone" class="form__phone">phone</label>
+              <div class="form__field-input">
+                <input type="tel" class="form__phone" name="phone" id="phone" value="">
+                <i class="form__validation fas fa-times-circle"></i>
+              </div>
+              <p class="form__error">Sólo números de un máximo de 5 a 14 caracteres</p>
+            </div>
+
+            <div class="form__btns">
+              <button type="button" name="prev" id="prev" class="btn__prev">Previous</button>
+              <button type="button" name="next" id="next" class="btn__next">Next</button>
+            </div>
+          </div>
+
+          <div class="form__group">
+            <div class="form__title">Bith</div>
+            <div class="form__field" id="form__date">
+              <label for="date" class="form__date">Date</label>
+              <div class="form__field-input">
+                <input type="date" class="form__date" name="date" id="date" value="">
+              </div>
+            </div>
+
+            <div class="form__field" id="form__gender">
+              <label for="gender" class="form__gender">Gender</label>
+              <div class="form__field-input">
+                <select class="gender" name="">
+                  <option value="1">Male</option>
+                  <option value="2">Female</option>
+                  <option value="3">Other</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form__btns">
+              <button type="button" name="prev2" id="prev2" class="btn__prev2">Previous</button>
+              <button type="button" name="next2" id="next2" class="btn__next2">Next</button>
+            </div>
+          </div>
+
+          <div class="form__group">
+            <div class="form__title">User Info</div>
+            <div class="form__field" id="form__user">
+              <label for="user" class="form__user">User</label>
+              <div class="form__field-input">
+                <input type="text" class="form__user" name="user" id="user" value="">
+                <i class="form__validation fas fa-times-circle"></i>
+              </div>
+              <p class="form__error">Solo letras o números de una maximo de 6 caracteres</p>
+            </div>
+
+            <div class="form__field" id="form__password">
+              <label for="password" class="form__password">Password</label>
+              <div class="form__field-input">
+                <input type="password" class="form__password" name="password" id="password" value="">
+                <i class="form__validation fas fa-times-circle"></i>
+              </div>
+              <p class="form__error">Sólo caracteres de un maximo de 8</p>
+            </div>
+
+            <div class="form__btns">
+              <button type="button" name="prev3" id="prev3" class="btn__prev3">Previous</button>
+              <button type="submit" name="submit" id="submit" class="btn__next3">Submit</button>
+            </div>
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </body>
+</html>
